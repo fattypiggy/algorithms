@@ -19,8 +19,8 @@ public class QuickFindUF {
     }
 
     /**
-     * @param p a point
-     * @param q another point
+     * @param p point p
+     * @param q point q
      * @return true if two points are connected, and vice versa
      */
     public boolean isConnected(int p, int q) {
@@ -30,8 +30,8 @@ public class QuickFindUF {
     /**
      * Interpretation: p and q are connected iff(if and only if) they have the same id.
      *
-     * @param p a point
-     * @param q another point
+     * @param p point p
+     * @param q point q
      */
     public void union(int p, int q) {
         int pid = id[p];
@@ -42,5 +42,4 @@ public class QuickFindUF {
                 id[i] = qid;
         }
     }
-
 }
