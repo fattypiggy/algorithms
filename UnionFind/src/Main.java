@@ -1,5 +1,6 @@
 import com.williamjing.unionfind.QuickFindUF;
 import com.williamjing.unionfind.QuickUnionUF;
+import com.williamjing.unionfind.WeightedQuickUnionUF;
 
 import java.io.*;
 
@@ -19,10 +20,12 @@ public class Main {
             // initialize the quick-find union find.
             QuickFindUF quickFindUF = new QuickFindUF(N);
             QuickUnionUF quickUnionUF = new QuickUnionUF(N);
+            WeightedQuickUnionUF weightedQuickUnionUF = new WeightedQuickUnionUF(N);
             while ((line = br.readLine()) != null) {
                 String[] buffer = line.split(" ");
                 quickFindUF.union(Integer.parseInt(buffer[0]), Integer.parseInt(buffer[1]));
                 quickUnionUF.union(Integer.parseInt(buffer[0]), Integer.parseInt(buffer[1]));
+                weightedQuickUnionUF.union(Integer.parseInt(buffer[0]), Integer.parseInt(buffer[1]));
                 System.out.println(line);
             }
 
@@ -39,6 +42,13 @@ public class Main {
             System.out.println("2 & 5 is connected? " + quickUnionUF.isConnected(2, 5));
             System.out.println("4 & 7 is connected? " + quickUnionUF.isConnected(4, 7));
             System.out.println("3 & 8 is connected? " + quickUnionUF.isConnected(3, 8));
+
+            System.out.println("Weighted Quick Union - Union Find");
+            System.out.println("6 & 7 is connected? " + weightedQuickUnionUF.isConnected(6, 7));
+            System.out.println("1 & 3 is connected? " + weightedQuickUnionUF.isConnected(1, 3));
+            System.out.println("2 & 5 is connected? " + weightedQuickUnionUF.isConnected(2, 5));
+            System.out.println("4 & 7 is connected? " + weightedQuickUnionUF.isConnected(4, 7));
+            System.out.println("3 & 8 is connected? " + weightedQuickUnionUF.isConnected(3, 8));
         } catch (Exception e) {
             e.printStackTrace();
         }
