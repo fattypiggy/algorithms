@@ -8,9 +8,11 @@ public class SortUtil {
      * @param list
      */
     public static void selectSort(int[] list) {
+        int counter = 0;
         for (int i = 0; i < list.length; i++) {
             int min = i;
-            for (int j = i; j < list.length; j++) {
+            for (int j = i + 1; j < list.length; j++) {
+                System.out.printf("counter: %d, i = %d, j = %d\n", ++counter, i, j);
                 if (list[j] < list[min]) {
                     min = j;
                 }
@@ -27,9 +29,11 @@ public class SortUtil {
      * @param list
      */
     public static void bubbleSort(int[] list) {
+        int counter = 0;
         for (int i = 0; i < list.length - 1; i++) {
             boolean flag = true;
             for (int j = 0; j < list.length - i - 1; j++) {
+                System.out.printf("counter: %d, i = %d, j = %d\n", ++counter, i, j);
                 if (list[j] > list[j + 1]) {
                     swap(list, j, j + 1);
                     flag = false;
@@ -48,9 +52,11 @@ public class SortUtil {
      * @param list
      */
     public static void insertSort(int[] list) {
+        int counter = 0;
         for (int i = 1; i < list.length; i++) {
             int j = i;
             while (j > 0 && list[j] < list[j - 1]) {
+                System.out.printf("counter: %d, i = %d, j = %d\n", ++counter, i, j);
                 swap(list, j - 1, j);
                 j--;
             }
