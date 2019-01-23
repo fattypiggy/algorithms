@@ -64,6 +64,18 @@ public class SortUtil {
     }
 
     /**
+     * merge sort - recursive version
+     * Time complexity: O(n*log n)
+     * Divide and conquer algorithm
+     * @param list
+     */
+    public static void mergeSort(int[] list) {
+        int length = list.length;
+        int[] result = new int[length];
+        mergeSortRecursive(list, result,0, length - 1);
+    }
+
+    /**
      * swap the arrayList[i] and arrayList[j].
      * @param arrayList
      * @param i
@@ -74,5 +86,36 @@ public class SortUtil {
         arrayList[i] = arrayList[j];
         arrayList[j] = temp;
         System.out.printf("%d and %d swapped.\n", arrayList[j], arrayList[i]);
+    }
+
+    private static final void mergeSortRecursive(int[] arrayList, int[] result, int start, int end) {
+        if (start >= end) {
+            return;
+        }
+
+        int length = end - start, middle = (length >> 1) + start;
+        int start1 = start, end1 = middle;
+        int start2 = middle + 1, end2 = end;
+
+        System.out.printf("split array into 2 arrays. start1 = %d, end1 = %d, start2 = %d, end2 = %d.\n", start1, end1, start2, end2);
+
+        mergeSortRecursive(arrayList, result, start1, end1);
+        mergeSortRecursive(arrayList, result, start2, end2);
+
+        int i = start;
+
+        while (start1 <= end1 && start2 <= end2) {
+            result[i++] = arrayList[start1] < arrayList[start2] ? arrayList[start1++] : arrayList[start2++];
+        }
+        while (start1 <= end1) {
+            result[i++] = arrayList[start1++];
+        }
+        while (start2 <= end2) {
+            result[i++] = arrayList[start2++];
+        }
+
+        for (int j = start; j <= end; j++) {
+            arrayList[j] = result[j];
+        }
     }
 }
